@@ -1,12 +1,37 @@
 ---
-title: "About"
+title: "INFO"
 jupyter: python3
 ---
 
-This is a Quarto website.
+## This is a First page in my homepage!     
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+Hi, I'm Jiwon Choi      
+Compute Tiger.      
+====================================
 
-```{python}
-1 + 1
+My GitHub       
+[GitHub]:<https://github.com/computetiger>         
+
+
+- Contact       
+    -e-mail: <bereno6@hanyang.ac.kr>        
+
+### Skill
+
+```
+python 
+Rstudio
+
+```
+
+### Certificate
+```
+ADSP
+MOS MASTER
+Computer Specialist in Spreadsheet & Database Level-2
+```
+
+### Project
+```
+Text Mining 
 ```
