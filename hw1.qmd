@@ -1,0 +1,64 @@
+---
+title: "INFO"
+jupyter: python3
+---
+## 1.(84page)      
+
+```{python}
+import pandas as pd
+import numpy as np    
+df1=pd.DataFrame({
+    "제품":["사과","딸기","수박"],
+    "가격":[1800,1500,3000],
+    "판매량":[24,38,13]})
+
+```
+
+```{python}
+print(f"과일 가격 평균:{df1["가격"].mean()}, 과일 판매량 평균:{df1["판매량"].mean()}")
+
+```
+
+
+## 2.(115page)
+```{python}
+
+df2=pd.read_csv('data/mpg.csv')
+df3=df2.copy()
+df3.head()
+```
+
+```{python}
+df3=df3.rename(columns={"cty":"city","hwy":"highway"})
+df3.head()
+```
+
+
+## 3.(130page)
+```{python}
+df4=pd.read_csv('data/midwest.csv')
+df4.head()
+```
+
+```{python}
+import matplotlib as plt
+df4.rename(columns={"poptotal":"total","popasian":"asian"},inplace=True)
+df4['percent']=df4['asian']/df4['total'] *100
+df4['percent'].plot.hist()
+df4.head()
+```
+
+
+```{python}
+
+print(f"아시아 인구 백분율 전체 평균: {df4['percent'].mean()}")
+df4['large_small']=np.where(df4['percent'].mean()>=df4['percent'],"small","large")
+df4.head()
+```
+
+
+```{python}
+df4_count=df4["large_small"].value_counts()
+df4_count.plot.bar(rot=0)
+```
+
