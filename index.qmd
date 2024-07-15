@@ -1,20 +1,12 @@
 ---
-title: "INFO"
+title: "HOME"
 jupyter: python3
 ---
 
-## This is a First page in my homepage!     
+##  homepage!     
 
-Hi, I'm Jiwon Choi      
 Compute Tiger.      
 ====================================
-
-My GitHub       
-[GitHub]:<https://github.com/computetiger>         
-
-
-- Contact       
-    -e-mail: <bereno6@hanyang.ac.kr>        
 
 ### Skill
 
@@ -26,9 +18,7 @@ Rstudio
 
 ### Certificate
 ```
-ADSP
-MOS MASTER
-Computer Specialist in Spreadsheet & Database Level-2
+Certificate
 ```
 
 ### Project
