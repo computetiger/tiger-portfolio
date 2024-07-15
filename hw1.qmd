@@ -7,6 +7,7 @@ jupyter: python3
 ```{python}
 import pandas as pd
 import numpy as np
+import seaborn as sns
 import matplotlib.pyplot as plt
 
 df1=pd.DataFrame({
@@ -31,7 +32,7 @@ df3.head()
 ```
 
 ```{python}
-df3=df3.rename(columns={"cty":"city","hwy":"highway"})
+df3.rename(columns={"cty":"city","hwy":"highway"},inplace=True)
 df3.head()
 ```
 
@@ -47,7 +48,6 @@ import matplotlib as plt
 df4.rename(columns={"poptotal":"total","popasian":"asian"},inplace=True)
 df4['percent']=df4['asian']/df4['total'] *100
 df4['percent'].plot.hist()
-plt.title("전체 인구 대비 아시아 인구 백분율")
 df4.head()
 ```
 
@@ -63,9 +63,11 @@ df4.head()
 ```{python}
 df4_count=df4["large_small"].value_counts()
 df4_count
-df4_count.plot.bar(rot=0)
-x.label("아시아 인구 백분율 평균 비교")
-plt.title("아시아 인구 백분율 빈도 막대 그래프")
-
 ```
+
+
+```{python}
+df4_count.plot.bar(rot=0)
+```
+
 
