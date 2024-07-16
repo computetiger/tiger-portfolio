@@ -1,0 +1,39 @@
+---
+title: "HW2"
+jupyter: python3
+---
+# 1.144page   
+
+
+### 자동차 배기량에 따라 고속도로 연비가 다른지 알아보려고 합니다. 배기량이 4 이하인 자동차와 5이상인 자동차 중 어떤 자동차의 고속도로 연비 평균이 더 높은지 알아보세요. 
+```{python}
+import pandas as pd
+import numpy as np    
+df=pd.read_csv('data/mpg.csv')
+df_4=df.query("displ<=4")
+df_5=df.query("displ>=5")
+print(f"displ이 4 이하인 자동차의 hwy 평균:{df_4['hwy'].mean()}")
+print(f"displ이 5 이상인 자동차의 hwy 평균:{df_5['hwy'].mean()}")
+df_hwy=np.where(((df_4["hwy"].mean())>(df_5["hwy"].mean())),"displ이 4이하인 자동차의 평균이 더 높다","displ이 5이상인 자동차의 평균이 더 높다.")
+print(df_hwy)
+```
+
+
+### 자동차 제조 회사에 따라 도시 연비가 어떠헤 다른지 알아보려고 합니다. audi와 toyota중 어느 자동차 제조 회사의 도시 연비 평균이 더 높은지 알아보세요. 
+```{python}
+df_audi=df.query("manufacturer=='audi'")
+df_toyota=df.query("manufacturer=='toyota'")
+print(f"audi의 도시 연비 평균: {df_audi["cty"].mean()}")
+print(f"toyota의 도시 연비 평균: {df_toyota["cty"].mean()}")
+df_max=np.where(((df_audi["cty"].mean())>(df_toyota["cty"].mean())),"audi의 평균이 더 높다","toyota의 평균이 더 높다.")
+print(df_max)
+```
+
+
+### chevrolet, ford, honda 자동차의 고속도로 연비 평균을 알아보려고 합니다. 세 회사의 데이터를 추출한 다음 hwy 의 전체 평균을 구해 보세요. 
+
+```{python}
+df_3car=df.query("manufacturer in ['chevrolet', 'ford', 'honda']")
+print(f"세 자동차의 hwy 전체 평균: {df_3car['hwy'].mean()}")
+```
+
