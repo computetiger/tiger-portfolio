@@ -1,5 +1,0 @@
----
-title: "HW3"
-jupyter: python3
----
-# 

@@ -6,3 +6,12 @@ listing:
   type: default
   categories: true
 ---
+
+Homepage. blog     
+
+
+### python
+```{python}
+print("big data ", 5+5)
+```
+

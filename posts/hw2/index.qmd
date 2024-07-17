@@ -1,4 +1,10 @@
 ---
+title: "LS bigdata school HW2"
+author: "tiger"
+date: "2024-07-16"
+categories: [bigdata]
+---
+---
 title: "HW2"
 jupyter: python3
 ---
