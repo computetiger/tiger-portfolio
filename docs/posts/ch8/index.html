@@ -9,7 +9,7 @@
 <meta name="author" content="tiger">
 <meta name="dcterms.date" content="2024-07-16">
 
-<title>Compute Tiger - HW2</title>
+<title>Compute Tiger - 교과서 Chapter 8</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -104,7 +104,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
+
+
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+<script type="text/javascript">
+
+window.PlotlyConfig = {MathJaxConfig: 'local'};
+
+if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}
+
+if (typeof require !== 'undefined') {
+
+require.undef("plotly");
+
+requirejs.config({
+
+    paths: {
+
+        'plotly': ['https://cdn.plot.ly/plotly-2.32.0.min']
+
+    }
+
+});
+
+require(['plotly'], function(Plotly) {
+
+    window._Plotly = Plotly;
+
+});
+
+}
+
+</script>
+
+
+
 
 
 <link rel="stylesheet" href="../../styles.css">
@@ -155,9 +190,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#page" id="toc-page" class="nav-link active" data-scroll-target="#page">1.144page</a></li>
-  <li><a href="#page-1" id="toc-page-1" class="nav-link" data-scroll-target="#page-1">2.153page</a></li>
-  <li><a href="#page-2" id="toc-page-2" class="nav-link" data-scroll-target="#page-2">3. 158page</a></li>
+  <li><a href="#read_csv" id="toc-read_csv" class="nav-link active" data-scroll-target="#read_csv">read_csv</a>
+  <ul class="collapse">
+  <li><a href="#scatterplot" id="toc-scatterplot" class="nav-link" data-scroll-target="#scatterplot">scatterplot</a></li>
+  <li><a href="#barplot" id="toc-barplot" class="nav-link" data-scroll-target="#barplot">barplot</a></li>
+  <li><a href="#groupby-barplot" id="toc-groupby-barplot" class="nav-link" data-scroll-target="#groupby-barplot">groupby &amp; barplot</a></li>
+  <li><a href="#countplot" id="toc-countplot" class="nav-link" data-scroll-target="#countplot">countplot</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -166,7 +205,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">HW2</h1>
+<h1 class="title">교과서 Chapter 8</h1>
   <div class="quarto-categories">
     <div class="quarto-category">bigdata</div>
   </div>
@@ -198,65 +237,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="page" class="level1">
-<h1>1.144page</h1>
-<section id="자동차-배기량에-따라-고속도로-연비가-다른지-알아보려고-합니다.-배기량이-4-이하인-자동차와-5이상인-자동차-중-어떤-자동차의-고속도로-연비-평균이-더-높은지-알아보세요." class="level4">
-<h4 class="anchored" data-anchor-id="자동차-배기량에-따라-고속도로-연비가-다른지-알아보려고-합니다.-배기량이-4-이하인-자동차와-5이상인-자동차-중-어떤-자동차의-고속도로-연비-평균이-더-높은지-알아보세요.">자동차 배기량에 따라 고속도로 연비가 다른지 알아보려고 합니다. 배기량이 4 이하인 자동차와 5이상인 자동차 중 어떤 자동차의 고속도로 연비 평균이 더 높은지 알아보세요.</h4>
-<div id="98f72a29" class="cell" data-execution_count="1">
+<section id="read_csv" class="level1">
+<h1>read_csv</h1>
+<div id="e95a742e" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np    </span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>df<span class="op">=</span>pd.read_csv(<span class="st">'data/mpg.csv'</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>df_4<span class="op">=</span>df.query(<span class="st">"displ&lt;=4"</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>df_5<span class="op">=</span>df.query(<span class="st">"displ&gt;=5"</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"displ이 4 이하인 자동차의 hwy 평균:</span><span class="sc">{</span>df_4[<span class="st">'hwy'</span>]<span class="sc">.</span>mean()<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"displ이 5 이상인 자동차의 hwy 평균:</span><span class="sc">{</span>df_5[<span class="st">'hwy'</span>]<span class="sc">.</span>mean()<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>df_hwy<span class="op">=</span>np.where(((df_4[<span class="st">"hwy"</span>].mean())<span class="op">&gt;</span>(df_5[<span class="st">"hwy"</span>].mean())),<span class="st">"displ이 4이하인 자동차의 평균이 더 높다"</span>,<span class="st">"displ이 5이상인 자동차의 평균이 더 높다."</span>)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_hwy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>displ이 4 이하인 자동차의 hwy 평균:25.96319018404908
-displ이 5 이상인 자동차의 hwy 평균:18.07894736842105
-displ이 4이하인 자동차의 평균이 더 높다</code></pre>
-</div>
-</div>
-</section>
-<section id="자동차-제조-회사에-따라-도시-연비가-어떻게-다른지-알아보려고-합니다.-audi와-toyota중-어느-자동차-제조-회사의-도시-연비-평균이-더-높은지-알아보세요." class="level4">
-<h4 class="anchored" data-anchor-id="자동차-제조-회사에-따라-도시-연비가-어떻게-다른지-알아보려고-합니다.-audi와-toyota중-어느-자동차-제조-회사의-도시-연비-평균이-더-높은지-알아보세요.">자동차 제조 회사에 따라 도시 연비가 어떻게 다른지 알아보려고 합니다. audi와 toyota중 어느 자동차 제조 회사의 도시 연비 평균이 더 높은지 알아보세요.</h4>
-<div id="914c8a10" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df_audi<span class="op">=</span>df.query(<span class="st">"manufacturer=='audi'"</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>df_toyota<span class="op">=</span>df.query(<span class="st">"manufacturer=='toyota'"</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"audi의 도시 연비 평균: </span><span class="sc">{</span>df_audi[<span class="st">"cty"</span>]<span class="sc">.</span>mean()<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"toyota의 도시 연비 평균: </span><span class="sc">{</span>df_toyota[<span class="st">"cty"</span>]<span class="sc">.</span>mean()<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>df_max<span class="op">=</span>np.where(((df_audi[<span class="st">"cty"</span>].mean())<span class="op">&gt;</span>(df_toyota[<span class="st">"cty"</span>].mean())),<span class="st">"audi의 평균이 더 높다"</span>,<span class="st">"toyota의 평균이 더 높다."</span>)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_max)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>audi의 도시 연비 평균: 17.61111111111111
-toyota의 도시 연비 평균: 18.529411764705884
-toyota의 평균이 더 높다.</code></pre>
-</div>
-</div>
-</section>
-<section id="chevrolet-ford-honda-자동차의-고속도로-연비-평균을-알아보려고-합니다.-세-회사의-데이터를-추출한-다음-hwy-의-전체-평균을-구해-보세요." class="level4">
-<h4 class="anchored" data-anchor-id="chevrolet-ford-honda-자동차의-고속도로-연비-평균을-알아보려고-합니다.-세-회사의-데이터를-추출한-다음-hwy-의-전체-평균을-구해-보세요.">chevrolet, ford, honda 자동차의 고속도로 연비 평균을 알아보려고 합니다. 세 회사의 데이터를 추출한 다음 hwy 의 전체 평균을 구해 보세요.</h4>
-<div id="90a87ae2" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df_3car<span class="op">=</span>df.query(<span class="st">"manufacturer in ['chevrolet', 'ford', 'honda']"</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"세 자동차의 hwy 전체 평균: </span><span class="sc">{</span>df_3car[<span class="st">'hwy'</span>]<span class="sc">.</span>mean()<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>세 자동차의 hwy 전체 평균: 22.50943396226415</code></pre>
-</div>
-</div>
-<hr>
-</section>
-</section>
-<section id="page-1" class="level1">
-<h1>2.153page</h1>
-<section id="audi에서-생산한-자동차-중에-어떤-자동차-모델의-hwy가-높은지-알아보려고-한다." class="level4">
-<h4 class="anchored" data-anchor-id="audi에서-생산한-자동차-중에-어떤-자동차-모델의-hwy가-높은지-알아보려고-한다.">audi에서 생산한 자동차 중에 어떤 자동차 모델의 hwy가 높은지 알아보려고 한다.</h4>
-</section>
-<section id="audi-에서-생산한-자동차-중-hwy가-15위에-해당하는-자동차의-데이터를-출력하세요." class="level4">
-<h4 class="anchored" data-anchor-id="audi-에서-생산한-자동차-중-hwy가-15위에-해당하는-자동차의-데이터를-출력하세요.">audi 에서 생산한 자동차 중 hwy가 1~5위에 해당하는 자동차의 데이터를 출력하세요.</h4>
-<div id="6ef3c0b7" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df.query(<span class="st">"manufacturer=='audi'"</span>).sort_values(<span class="st">"hwy"</span>,ascending<span class="op">=</span><span class="va">False</span>).head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt    </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns    </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>mpg<span class="op">=</span>pd.read_csv(<span class="st">'data/mpg.csv'</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>mpg.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
 <div>
 
 
@@ -278,6 +267,34 @@ toyota의 평균이 더 높다.</code></pre>
 </tr>
 </thead>
 <tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>audi</td>
+<td>a4</td>
+<td>1.8</td>
+<td>1999</td>
+<td>4</td>
+<td>auto(l5)</td>
+<td>f</td>
+<td>18</td>
+<td>29</td>
+<td>p</td>
+<td>compact</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>audi</td>
+<td>a4</td>
+<td>1.8</td>
+<td>1999</td>
+<td>4</td>
+<td>manual(m5)</td>
+<td>f</td>
+<td>21</td>
+<td>29</td>
+<td>p</td>
+<td>compact</td>
+</tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
 <td>audi</td>
@@ -305,148 +322,6 @@ toyota의 평균이 더 높다.</code></pre>
 <td>30</td>
 <td>p</td>
 <td>compact</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">1</td>
-<td>audi</td>
-<td>a4</td>
-<td>1.8</td>
-<td>1999</td>
-<td>4</td>
-<td>manual(m5)</td>
-<td>f</td>
-<td>21</td>
-<td>29</td>
-<td>p</td>
-<td>compact</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">0</td>
-<td>audi</td>
-<td>a4</td>
-<td>1.8</td>
-<td>1999</td>
-<td>4</td>
-<td>auto(l5)</td>
-<td>f</td>
-<td>18</td>
-<td>29</td>
-<td>p</td>
-<td>compact</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">9</td>
-<td>audi</td>
-<td>a4 quattro</td>
-<td>2.0</td>
-<td>2008</td>
-<td>4</td>
-<td>manual(m6)</td>
-<td>4</td>
-<td>20</td>
-<td>28</td>
-<td>p</td>
-<td>compact</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
-<hr>
-</section>
-</section>
-<section id="page-2" class="level1">
-<h1>3. 158page</h1>
-<section id="mpg-데이터-복사본을-만들고-cty와-hwy를-더한-합산-연비-변수를-추가하세요." class="level4">
-<h4 class="anchored" data-anchor-id="mpg-데이터-복사본을-만들고-cty와-hwy를-더한-합산-연비-변수를-추가하세요.">mpg 데이터 복사본을 만들고, cty와 hwy를 더한 ’합산 연비 변수’를 추가하세요.</h4>
-<div id="73986228" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df1<span class="op">=</span>df.copy()</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>df1<span class="op">=</span>df1.assign(cum_effi<span class="op">=</span>df1[<span class="st">'cty'</span>]<span class="op">+</span>df1[<span class="st">'hwy'</span>])</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>df1.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="6">
-<div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">manufacturer</th>
-<th data-quarto-table-cell-role="th">model</th>
-<th data-quarto-table-cell-role="th">displ</th>
-<th data-quarto-table-cell-role="th">year</th>
-<th data-quarto-table-cell-role="th">cyl</th>
-<th data-quarto-table-cell-role="th">trans</th>
-<th data-quarto-table-cell-role="th">drv</th>
-<th data-quarto-table-cell-role="th">cty</th>
-<th data-quarto-table-cell-role="th">hwy</th>
-<th data-quarto-table-cell-role="th">fl</th>
-<th data-quarto-table-cell-role="th">category</th>
-<th data-quarto-table-cell-role="th">cum_effi</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>audi</td>
-<td>a4</td>
-<td>1.8</td>
-<td>1999</td>
-<td>4</td>
-<td>auto(l5)</td>
-<td>f</td>
-<td>18</td>
-<td>29</td>
-<td>p</td>
-<td>compact</td>
-<td>47</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>audi</td>
-<td>a4</td>
-<td>1.8</td>
-<td>1999</td>
-<td>4</td>
-<td>manual(m5)</td>
-<td>f</td>
-<td>21</td>
-<td>29</td>
-<td>p</td>
-<td>compact</td>
-<td>50</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>audi</td>
-<td>a4</td>
-<td>2.0</td>
-<td>2008</td>
-<td>4</td>
-<td>manual(m6)</td>
-<td>f</td>
-<td>20</td>
-<td>31</td>
-<td>p</td>
-<td>compact</td>
-<td>51</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>audi</td>
-<td>a4</td>
-<td>2.0</td>
-<td>2008</td>
-<td>4</td>
-<td>auto(av)</td>
-<td>f</td>
-<td>21</td>
-<td>30</td>
-<td>p</td>
-<td>compact</td>
-<td>51</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
@@ -461,296 +336,105 @@ toyota의 평균이 더 높다.</code></pre>
 <td>26</td>
 <td>p</td>
 <td>compact</td>
-<td>42</td>
 </tr>
 </tbody>
 </table>
 
+</div>
+</div>
+</div>
+<section id="scatterplot" class="level3">
+<h3 class="anchored" data-anchor-id="scatterplot">scatterplot</h3>
+<ul>
+<li>seaborn 을 사용한 산점도</li>
+</ul>
+<div id="2a7c353c" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>mpg,x<span class="op">=</span><span class="st">"displ"</span>,y<span class="op">=</span><span class="st">"hwy"</span>,hue<span class="op">=</span><span class="st">"drv"</span>).<span class="bu">set</span>(xlim<span class="op">=</span>[<span class="dv">3</span>,<span class="dv">6</span>], ylim<span class="op">=</span>[<span class="dv">10</span>,<span class="dv">30</span>])</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.figure(figsize=(8,7))</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-3-output-1.png" width="608" height="434" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>plotly 를 사용한 산점도</li>
+</ul>
+<div id="de2d2c16" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>px.scatter(data_frame<span class="op">=</span>mpg, x<span class="op">=</span><span class="st">'cty'</span>,y<span class="op">=</span><span class="st">'hwy'</span>,color<span class="op">=</span><span class="st">'drv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>                            <div id="e8484baa-a998-4801-8f96-ccfc78f30789" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("e8484baa-a998-4801-8f96-ccfc78f30789")) {                    Plotly.newPlot(                        "e8484baa-a998-4801-8f96-ccfc78f30789",                        [{"hovertemplate":"drv=f\u003cbr\u003ecty=%{x}\u003cbr\u003ehwy=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"f","marker":{"color":"#636efa","symbol":"circle"},"mode":"markers","name":"f","orientation":"v","showlegend":true,"x":[18,21,20,21,16,18,18,19,22,18,18,17,18,17,16,16,17,17,11,15,15,16,16,28,24,25,23,24,26,25,24,21,18,18,21,21,18,18,19,19,19,20,20,17,16,17,21,19,23,23,19,19,18,19,19,18,16,17,18,16,21,21,21,21,18,18,19,21,21,21,22,18,18,18,24,24,26,28,26,21,19,21,22,17,33,21,19,22,21,21,21,16,17,35,29,21,19,20,20,21,18,19,21,16,18,17],"xaxis":"x","y":[29,29,31,30,26,26,27,27,30,26,29,26,24,24,22,22,24,24,17,22,21,23,23,33,32,32,29,32,34,36,36,29,26,27,30,31,26,26,28,26,29,28,27,24,24,24,29,27,31,32,27,26,26,25,25,26,26,27,28,25,29,27,31,31,26,26,28,27,29,31,31,26,26,27,30,33,35,37,35,29,26,29,29,24,44,29,26,29,29,29,29,23,24,44,41,29,26,28,29,29,29,28,29,26,26,26],"yaxis":"y","type":"scatter"},{"hovertemplate":"drv=4\u003cbr\u003ecty=%{x}\u003cbr\u003ehwy=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"4","marker":{"color":"#EF553B","symbol":"circle"},"mode":"markers","name":"4","orientation":"v","showlegend":true,"x":[18,16,20,19,15,17,17,15,15,17,16,14,11,11,14,15,14,13,14,14,14,9,11,11,13,13,9,13,11,13,11,12,9,13,13,12,9,11,11,13,11,14,15,14,13,13,13,14,14,13,13,13,11,13,17,15,15,14,9,14,13,11,11,12,12,11,14,13,13,13,14,15,14,12,18,18,20,19,20,18,21,19,19,19,20,20,19,20,15,16,15,15,16,14,11,13,15,16,17,15,15,15,16],"xaxis":"x","y":[26,25,28,27,25,25,25,25,24,25,23,19,14,15,17,19,18,17,17,19,19,12,17,15,17,17,12,17,16,18,15,16,12,17,17,16,12,15,16,17,15,17,19,17,19,19,17,17,17,16,16,17,15,17,22,19,20,17,12,19,18,14,15,18,18,15,17,19,19,17,17,17,20,18,25,24,27,25,26,23,26,26,26,26,25,27,25,27,20,20,19,17,20,17,15,18,20,20,22,17,19,18,20],"yaxis":"y","type":"scatter"},{"hovertemplate":"drv=r\u003cbr\u003ecty=%{x}\u003cbr\u003ehwy=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"r","marker":{"color":"#00cc96","symbol":"circle"},"mode":"markers","name":"r","orientation":"v","showlegend":true,"x":[14,11,14,13,12,16,15,16,15,15,11,11,12,18,18,17,16,15,15,15,15,14,11,11,12],"xaxis":"x","y":[20,15,20,17,17,26,23,26,25,24,17,17,18,26,25,26,24,21,22,23,22,20,17,16,18],"yaxis":"y","type":"scatter"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"cty"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"hwy"}},"legend":{"title":{"text":"drv"},"tracegroupgap":0}},                        {"responsive": true}                    ).then(function(){
+                            
+var gd = document.getElementById('e8484baa-a998-4801-8f96-ccfc78f30789');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                });            </script>        </div>
+</div>
+</div>
+</section>
+<section id="barplot" class="level3">
+<h3 class="anchored" data-anchor-id="barplot">barplot</h3>
+<div id="c33fc5d8" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df_mpg<span class="op">=</span>mpg.groupby(<span class="st">"drv"</span>, as_index<span class="op">=</span><span class="va">False</span>).agg(mean_hwy<span class="op">=</span>(<span class="st">'hwy'</span>,<span class="st">'mean'</span>))</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>sns.barplot(data<span class="op">=</span>df_mpg, x<span class="op">=</span><span class="st">"drv"</span>,y<span class="op">=</span><span class="st">"mean_hwy"</span>,hue<span class="op">=</span><span class="st">"drv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-5-output-1.png" width="585" height="429" class="figure-img"></p>
+</figure>
 </div>
 </div>
 </div>
 </section>
-<section id="앞에서-만든-합산-연비-변수를-2로-나눠-평균-연비-변수를-추가해주세요." class="level4">
-<h4 class="anchored" data-anchor-id="앞에서-만든-합산-연비-변수를-2로-나눠-평균-연비-변수를-추가해주세요.">앞에서 만든 ’합산 연비 변수’를 2로 나눠 ’평균 연비 변수’를 추가해주세요.</h4>
-<div id="72e96fa9" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df1<span class="op">=</span>df1.assign(mean_effi<span class="op">=</span>df1[<span class="st">'cum_effi'</span>]<span class="op">/</span><span class="dv">2</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>df1.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
+<section id="groupby-barplot" class="level3">
+<h3 class="anchored" data-anchor-id="groupby-barplot">groupby &amp; barplot</h3>
+<div id="e069199f" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df_mpg<span class="op">=</span> df_mpg.sort_values(<span class="st">"mean_hwy"</span>,ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#208page</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>df_mpg<span class="op">=</span>mpg.groupby(<span class="st">"drv"</span>,as_index<span class="op">=</span><span class="va">False</span>) <span class="op">\</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>          .agg(n<span class="op">=</span>(<span class="st">"drv"</span>,<span class="st">"count"</span>))    </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>sns.barplot(df_mpg,x<span class="op">=</span><span class="st">"drv"</span>,y<span class="op">=</span><span class="st">'n'</span>,hue<span class="op">=</span><span class="st">"drv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
 <div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">manufacturer</th>
-<th data-quarto-table-cell-role="th">model</th>
-<th data-quarto-table-cell-role="th">displ</th>
-<th data-quarto-table-cell-role="th">year</th>
-<th data-quarto-table-cell-role="th">cyl</th>
-<th data-quarto-table-cell-role="th">trans</th>
-<th data-quarto-table-cell-role="th">drv</th>
-<th data-quarto-table-cell-role="th">cty</th>
-<th data-quarto-table-cell-role="th">hwy</th>
-<th data-quarto-table-cell-role="th">fl</th>
-<th data-quarto-table-cell-role="th">category</th>
-<th data-quarto-table-cell-role="th">cum_effi</th>
-<th data-quarto-table-cell-role="th">mean_effi</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>audi</td>
-<td>a4</td>
-<td>1.8</td>
-<td>1999</td>
-<td>4</td>
-<td>auto(l5)</td>
-<td>f</td>
-<td>18</td>
-<td>29</td>
-<td>p</td>
-<td>compact</td>
-<td>47</td>
-<td>23.5</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>audi</td>
-<td>a4</td>
-<td>1.8</td>
-<td>1999</td>
-<td>4</td>
-<td>manual(m5)</td>
-<td>f</td>
-<td>21</td>
-<td>29</td>
-<td>p</td>
-<td>compact</td>
-<td>50</td>
-<td>25.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>audi</td>
-<td>a4</td>
-<td>2.0</td>
-<td>2008</td>
-<td>4</td>
-<td>manual(m6)</td>
-<td>f</td>
-<td>20</td>
-<td>31</td>
-<td>p</td>
-<td>compact</td>
-<td>51</td>
-<td>25.5</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>audi</td>
-<td>a4</td>
-<td>2.0</td>
-<td>2008</td>
-<td>4</td>
-<td>auto(av)</td>
-<td>f</td>
-<td>21</td>
-<td>30</td>
-<td>p</td>
-<td>compact</td>
-<td>51</td>
-<td>25.5</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>audi</td>
-<td>a4</td>
-<td>2.8</td>
-<td>1999</td>
-<td>6</td>
-<td>auto(l5)</td>
-<td>f</td>
-<td>16</td>
-<td>26</td>
-<td>p</td>
-<td>compact</td>
-<td>42</td>
-<td>21.0</td>
-</tr>
-</tbody>
-</table>
-
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-6-output-1.png" width="593" height="429" class="figure-img"></p>
+</figure>
 </div>
 </div>
 </div>
 </section>
-<section id="평균-연비-변수가-가장-높은-자동차-3종의-데이터를-출력하세요." class="level4">
-<h4 class="anchored" data-anchor-id="평균-연비-변수가-가장-높은-자동차-3종의-데이터를-출력하세요.">’평균 연비 변수’가 가장 높은 자동차 3종의 데이터를 출력하세요.</h4>
-<div id="eced3ba6" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df1.sort_values(<span class="st">'mean_effi'</span>,ascending<span class="op">=</span><span class="va">False</span>).head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
+<section id="countplot" class="level3">
+<h3 class="anchored" data-anchor-id="countplot">countplot</h3>
+<div id="4c12bc1e" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>sns.countplot(mpg,x<span class="op">=</span><span class="st">'drv'</span>,order<span class="op">=</span>[<span class="st">'4'</span>,<span class="st">'f'</span>,<span class="st">'r'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
 <div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">manufacturer</th>
-<th data-quarto-table-cell-role="th">model</th>
-<th data-quarto-table-cell-role="th">displ</th>
-<th data-quarto-table-cell-role="th">year</th>
-<th data-quarto-table-cell-role="th">cyl</th>
-<th data-quarto-table-cell-role="th">trans</th>
-<th data-quarto-table-cell-role="th">drv</th>
-<th data-quarto-table-cell-role="th">cty</th>
-<th data-quarto-table-cell-role="th">hwy</th>
-<th data-quarto-table-cell-role="th">fl</th>
-<th data-quarto-table-cell-role="th">category</th>
-<th data-quarto-table-cell-role="th">cum_effi</th>
-<th data-quarto-table-cell-role="th">mean_effi</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">221</td>
-<td>volkswagen</td>
-<td>new beetle</td>
-<td>1.9</td>
-<td>1999</td>
-<td>4</td>
-<td>manual(m5)</td>
-<td>f</td>
-<td>35</td>
-<td>44</td>
-<td>d</td>
-<td>subcompact</td>
-<td>79</td>
-<td>39.5</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">212</td>
-<td>volkswagen</td>
-<td>jetta</td>
-<td>1.9</td>
-<td>1999</td>
-<td>4</td>
-<td>manual(m5)</td>
-<td>f</td>
-<td>33</td>
-<td>44</td>
-<td>d</td>
-<td>compact</td>
-<td>77</td>
-<td>38.5</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">222</td>
-<td>volkswagen</td>
-<td>new beetle</td>
-<td>1.9</td>
-<td>1999</td>
-<td>4</td>
-<td>auto(l4)</td>
-<td>f</td>
-<td>29</td>
-<td>41</td>
-<td>d</td>
-<td>subcompact</td>
-<td>70</td>
-<td>35.0</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
-</section>
-<section id="번-문제를-해결할-수-있는-하나로-연결된-pandas-구문을-만들어-실행해-보세요.-데이터는-복사본-대신-원본을-사용해-보세요." class="level4">
-<h4 class="anchored" data-anchor-id="번-문제를-해결할-수-있는-하나로-연결된-pandas-구문을-만들어-실행해-보세요.-데이터는-복사본-대신-원본을-사용해-보세요.">1~3 번 문제를 해결할 수 있는 하나로 연결된 pandas 구문을 만들어 실행해 보세요. 데이터는 복사본 대신 원본을 사용해 보세요.</h4>
-<div id="00d1499a" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df<span class="op">=</span>df.assign(</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    cum_effi<span class="op">=</span>df1[<span class="st">'cty'</span>]<span class="op">+</span>df1[<span class="st">'hwy'</span>],</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    mean_effi<span class="op">=</span>df1[<span class="st">'cum_effi'</span>]<span class="op">/</span><span class="dv">2</span>)</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>df1.sort_values(<span class="st">'mean_effi'</span>,ascending<span class="op">=</span><span class="va">False</span>).head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="9">
-<div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">manufacturer</th>
-<th data-quarto-table-cell-role="th">model</th>
-<th data-quarto-table-cell-role="th">displ</th>
-<th data-quarto-table-cell-role="th">year</th>
-<th data-quarto-table-cell-role="th">cyl</th>
-<th data-quarto-table-cell-role="th">trans</th>
-<th data-quarto-table-cell-role="th">drv</th>
-<th data-quarto-table-cell-role="th">cty</th>
-<th data-quarto-table-cell-role="th">hwy</th>
-<th data-quarto-table-cell-role="th">fl</th>
-<th data-quarto-table-cell-role="th">category</th>
-<th data-quarto-table-cell-role="th">cum_effi</th>
-<th data-quarto-table-cell-role="th">mean_effi</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">221</td>
-<td>volkswagen</td>
-<td>new beetle</td>
-<td>1.9</td>
-<td>1999</td>
-<td>4</td>
-<td>manual(m5)</td>
-<td>f</td>
-<td>35</td>
-<td>44</td>
-<td>d</td>
-<td>subcompact</td>
-<td>79</td>
-<td>39.5</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">212</td>
-<td>volkswagen</td>
-<td>jetta</td>
-<td>1.9</td>
-<td>1999</td>
-<td>4</td>
-<td>manual(m5)</td>
-<td>f</td>
-<td>33</td>
-<td>44</td>
-<td>d</td>
-<td>compact</td>
-<td>77</td>
-<td>38.5</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">222</td>
-<td>volkswagen</td>
-<td>new beetle</td>
-<td>1.9</td>
-<td>1999</td>
-<td>4</td>
-<td>auto(l4)</td>
-<td>f</td>
-<td>29</td>
-<td>41</td>
-<td>d</td>
-<td>subcompact</td>
-<td>70</td>
-<td>35.0</td>
-</tr>
-</tbody>
-</table>
-
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-7-output-1.png" width="593" height="429" class="figure-img"></p>
+</figure>
 </div>
 </div>
 </div>
