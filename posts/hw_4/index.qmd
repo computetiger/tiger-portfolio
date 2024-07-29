@@ -14,21 +14,23 @@ jupyter: python3
 
 ***                           
 
-## 1. n-1로 나눈 것을 s_2, n으로 나눈 것을 k_2로 정의하고, s_2의 분포와 k_2의 분포를 그려주세요! (10000개 사용)                     
+## 1. n-1로 나눈 것을 s_2, n으로 나눈 것을 k_2로 정의하고, s_2의 분포와 k_2의 분포를 그려주세요! (10000개 사용)
+
 ```{python}
 import numpy as np    
 import pandas as pd
 import matplotlib.pyplot as plt    
 import seaborn as sns    
+from scipy.stats import uniform
 
 s_2=[]
 k_2=[]
 
 for i in range(10000):
-    a=np.random.uniform(3,7,20)
+    a=uniform.rvs(size=20, loc=3, scale=4)
     b=sum((a-a.mean())**2)
-    c_1=b/(len(a)-1)
-    c=b/(len(a))
+    c_1= b/(len(a)-1)
+    c  = b/(len(a))
     s_2.append(c_1)
     k_2.append(c)
 sns.histplot(data=s_2, color="red")

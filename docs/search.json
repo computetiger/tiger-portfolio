@@ -88,7 +88,7 @@
     "href": "blog.html",
     "title": "글 목록",
     "section": "",
-    "text": "Homepage. blog\n\npython\n\nprint(\"big data \", 5+5)\n\nbig data  10\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW5\n\n\n\n\n\n\nbigdata\n\n\n\n\n\n\n\n\n\nJul 29, 2024\n\n\ntiger\n\n\n\n\n\n\n\n\n\n\n\n\nHW4\n\n\n\n\n\n\nscipy\n\n\n\n\n\n\n\n\n\nJul 25, 2024\n\n\ntiger\n\n\n\n\n\n\n\n\n\n\n\n\nHW0\n\n\n\n\n\n\nbigdata\n\n\n\n\n\n\n\n\n\nJul 22, 2024\n\n\ntiger\n\n\n\n\n\n\n\n\n\n\n\n\n교과서 Chapter 8\n\n\n\n\n\n\nbigdata\n\n\n\n\n\n\n\n\n\nJul 16, 2024\n\n\ntiger\n\n\n\n\n\n\n\n\n\n\n\n\nHW2\n\n\n\n\n\n\nbigdata\n\n\n\n\n\n\n\n\n\nJul 16, 2024\n\n\ntiger\n\n\n\n\n\n\n\n\n\n\n\n\nHW1\n\n\n\n\n\n\nbigdata\n\n\n\n\n\n\n\n\n\nJul 15, 2024\n\n\ntiger\n\n\n\n\n\n\nNo matching items"
+    "text": "Homepage. blog\n\npython\n\nprint(\"big data \", 5+5)\n\nbig data  10\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHW5\n\n\n\n\n\n\nbigdata\n\n\n\n\n\n\n\n\n\nJul 29, 2024\n\n\ntiger\n\n\n\n\n\n\n\n\n\n\n\n\nHW_4\n\n\n\n\n\n\nbigdata\n\n\n\n\n\n\n\n\n\nJul 29, 2024\n\n\ntiger\n\n\n\n\n\n\n\n\n\n\n\n\nHW4\n\n\n\n\n\n\nscipy\n\n\n\n\n\n\n\n\n\nJul 25, 2024\n\n\ntiger\n\n\n\n\n\n\n\n\n\n\n\n\nHW0\n\n\n\n\n\n\nbigdata\n\n\n\n\n\n\n\n\n\nJul 22, 2024\n\n\ntiger\n\n\n\n\n\n\n\n\n\n\n\n\n교과서 Chapter 8\n\n\n\n\n\n\nbigdata\n\n\n\n\n\n\n\n\n\nJul 16, 2024\n\n\ntiger\n\n\n\n\n\n\n\n\n\n\n\n\nHW2\n\n\n\n\n\n\nbigdata\n\n\n\n\n\n\n\n\n\nJul 16, 2024\n\n\ntiger\n\n\n\n\n\n\n\n\n\n\n\n\nHW1\n\n\n\n\n\n\nbigdata\n\n\n\n\n\n\n\n\n\nJul 15, 2024\n\n\ntiger\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/hw2/index.html",
@@ -192,6 +192,41 @@
     "objectID": "posts/hw5/index.html#사용하는-것이-타당한지-써주세요",
     "href": "posts/hw5/index.html#사용하는-것이-타당한지-써주세요",
     "title": "HW5",
+    "section": "사용하는 것이 타당한지 써주세요!",
+    "text": "사용하는 것이 타당한지 써주세요!\n\nplt.axvline(var, color = 'green', linestyle = '-',  linewidth = 3)\nsns.histplot(data=s_2, color=\"red\")\nsns.histplot(data=k_2, color=\"y\")\nplt.show()"
+  },
+  {
+    "objectID": "posts/hw_4/index.html",
+    "href": "posts/hw_4/index.html",
+    "title": "HW_4",
+    "section": "",
+    "text": "표본 분산 계산 시 왜 n-1로 나누는지 알아보도록 하겠습니다. 균일분포 (3, 7)에서 20개의 표본을 뽑아서 분산을 2가지 방법으로 추정해보세요."
+  },
+  {
+    "objectID": "posts/hw_4/index.html#n-1로-나눈-것을-s_2-n으로-나눈-것을-k_2로-정의하고-s_2의-분포와-k_2의-분포를-그려주세요-10000개-사용",
+    "href": "posts/hw_4/index.html#n-1로-나눈-것을-s_2-n으로-나눈-것을-k_2로-정의하고-s_2의-분포와-k_2의-분포를-그려주세요-10000개-사용",
+    "title": "HW_4",
+    "section": "1. n-1로 나눈 것을 s_2, n으로 나눈 것을 k_2로 정의하고, s_2의 분포와 k_2의 분포를 그려주세요! (10000개 사용)",
+    "text": "1. n-1로 나눈 것을 s_2, n으로 나눈 것을 k_2로 정의하고, s_2의 분포와 k_2의 분포를 그려주세요! (10000개 사용)\n\nimport numpy as np    \nimport pandas as pd\nimport matplotlib.pyplot as plt    \nimport seaborn as sns    \nfrom scipy.stats import uniform\n\ns_2=[]\nk_2=[]\n\nfor i in range(10000):\n    a=uniform.rvs(size=20, loc=3, scale=4)\n    b=sum((a-a.mean())**2)\n    c_1= b/(len(a)-1)\n    c  = b/(len(a))\n    s_2.append(c_1)\n    k_2.append(c)\nsns.histplot(data=s_2, color=\"red\")\nsns.histplot(data=k_2, color=\"y\")\nplt.show()"
+  },
+  {
+    "objectID": "posts/hw_4/index.html#각-분포-그래프에-모분산의-위치에-녹색-막대를-그려주세요.",
+    "href": "posts/hw_4/index.html#각-분포-그래프에-모분산의-위치에-녹색-막대를-그려주세요.",
+    "title": "HW_4",
+    "section": "2. 각 분포 그래프에 모분산의 위치에 녹색 막대를 그려주세요.",
+    "text": "2. 각 분포 그래프에 모분산의 위치에 녹색 막대를 그려주세요.\n\nvar=((7-3)**2)/12\nplt.axvline(var, color = 'green', linestyle = '-',  linewidth = 3)\nsns.histplot(data=s_2, color=\"red\")\nplt.show()\nprint(\"n-1로 나눈 것\")\n\n\n\n\n\n\n\n\nn-1로 나눈 것\n\n\n\nplt.axvline(var, color = 'green', linestyle = '-',  linewidth = 3)\nsns.histplot(data=k_2, color=\"y\")\nplt.show()\nprint(\"n으로 나눈 것\")\n\n\n\n\n\n\n\n\nn으로 나눈 것"
+  },
+  {
+    "objectID": "posts/hw_4/index.html#결과를-살펴보고-왜-n-1로-나눈-것을-분산을-추정하는-지표로",
+    "href": "posts/hw_4/index.html#결과를-살펴보고-왜-n-1로-나눈-것을-분산을-추정하는-지표로",
+    "title": "HW_4",
+    "section": "3. 결과를 살펴보고, 왜 n-1로 나눈 것을 분산을 추정하는 지표로",
+    "text": "3. 결과를 살펴보고, 왜 n-1로 나눈 것을 분산을 추정하는 지표로"
+  },
+  {
+    "objectID": "posts/hw_4/index.html#사용하는-것이-타당한지-써주세요",
+    "href": "posts/hw_4/index.html#사용하는-것이-타당한지-써주세요",
+    "title": "HW_4",
     "section": "사용하는 것이 타당한지 써주세요!",
     "text": "사용하는 것이 타당한지 써주세요!\n\nplt.axvline(var, color = 'green', linestyle = '-',  linewidth = 3)\nsns.histplot(data=s_2, color=\"red\")\nsns.histplot(data=k_2, color=\"y\")\nplt.show()"
   }
