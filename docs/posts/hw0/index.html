@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="tiger">
-<meta name="dcterms.date" content="2024-07-29">
+<meta name="dcterms.date" content="2024-07-22">
 
-<title>Compute Tiger - HW4</title>
+<title>Compute Tiger - HW0</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -59,7 +59,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -102,6 +102,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 <link rel="stylesheet" href="../../styles.css">
@@ -152,10 +155,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#n-1로-나눈-것을-s_2-n으로-나눈-것을-k_2로-정의하고-s_2의-분포와-k_2의-분포를-그려주세요-10000개-사용" id="toc-n-1로-나눈-것을-s_2-n으로-나눈-것을-k_2로-정의하고-s_2의-분포와-k_2의-분포를-그려주세요-10000개-사용" class="nav-link active" data-scroll-target="#n-1로-나눈-것을-s_2-n으로-나눈-것을-k_2로-정의하고-s_2의-분포와-k_2의-분포를-그려주세요-10000개-사용">1. n-1로 나눈 것을 s_2, n으로 나눈 것을 k_2로 정의하고, s_2의 분포와 k_2의 분포를 그려주세요! (10000개 사용)</a></li>
-  <li><a href="#각-분포-그래프에-모분산의-위치에-녹색-막대를-그려주세요." id="toc-각-분포-그래프에-모분산의-위치에-녹색-막대를-그려주세요." class="nav-link" data-scroll-target="#각-분포-그래프에-모분산의-위치에-녹색-막대를-그려주세요.">2. 각 분포 그래프에 모분산의 위치에 녹색 막대를 그려주세요.</a></li>
-  <li><a href="#결과를-살펴보고-왜-n-1로-나눈-것을-분산을-추정하는-지표로" id="toc-결과를-살펴보고-왜-n-1로-나눈-것을-분산을-추정하는-지표로" class="nav-link" data-scroll-target="#결과를-살펴보고-왜-n-1로-나눈-것을-분산을-추정하는-지표로">3. 결과를 살펴보고, 왜 n-1로 나눈 것을 분산을 추정하는 지표로</a></li>
-  <li><a href="#사용하는-것이-타당한지-써주세요" id="toc-사용하는-것이-타당한지-써주세요" class="nav-link" data-scroll-target="#사용하는-것이-타당한지-써주세요">사용하는 것이 타당한지 써주세요!</a></li>
+  <li><a href="#page" id="toc-page" class="nav-link active" data-scroll-target="#page">204page</a>
+  <ul class="collapse">
+  <li><a href="#q1" id="toc-q1" class="nav-link" data-scroll-target="#q1">Q1</a></li>
+  <li><a href="#q2" id="toc-q2" class="nav-link" data-scroll-target="#q2">Q2</a></li>
+  </ul></li>
+  <li><a href="#page-1" id="toc-page-1" class="nav-link" data-scroll-target="#page-1">211 page</a>
+  <ul class="collapse">
+  <li><a href="#q1-1" id="toc-q1-1" class="nav-link" data-scroll-target="#q1-1">Q1</a></li>
+  <li><a href="#q2-1" id="toc-q2-1" class="nav-link" data-scroll-target="#q2-1">Q2</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -164,7 +173,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">HW4</h1>
+<h1 class="title">HW0</h1>
   <div class="quarto-categories">
     <div class="quarto-category">bigdata</div>
   </div>
@@ -184,7 +193,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">July 29, 2024</p>
+      <p class="date">July 22, 2024</p>
     </div>
   </div>
   
@@ -196,95 +205,352 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<section id="page" class="level1">
+<h1>204page</h1>
+<section id="q1" class="level3">
+<h3 class="anchored" data-anchor-id="q1">Q1</h3>
+<pre><code>mpg데이터의 cty와 hwy간의 어떤 관계가 있는지 알아보려고 합니다. 
+x축은 cty, y축은 hwy로 된 산점도를 만들어 보세요.</code></pre>
+<div id="c3e3ddeb" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>mpg<span class="op">=</span>pd.read_csv(<span class="st">'data/mpg.csv'</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>mpg.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">manufacturer</th>
+<th data-quarto-table-cell-role="th">model</th>
+<th data-quarto-table-cell-role="th">displ</th>
+<th data-quarto-table-cell-role="th">year</th>
+<th data-quarto-table-cell-role="th">cyl</th>
+<th data-quarto-table-cell-role="th">trans</th>
+<th data-quarto-table-cell-role="th">drv</th>
+<th data-quarto-table-cell-role="th">cty</th>
+<th data-quarto-table-cell-role="th">hwy</th>
+<th data-quarto-table-cell-role="th">fl</th>
+<th data-quarto-table-cell-role="th">category</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>audi</td>
+<td>a4</td>
+<td>1.8</td>
+<td>1999</td>
+<td>4</td>
+<td>auto(l5)</td>
+<td>f</td>
+<td>18</td>
+<td>29</td>
+<td>p</td>
+<td>compact</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>audi</td>
+<td>a4</td>
+<td>1.8</td>
+<td>1999</td>
+<td>4</td>
+<td>manual(m5)</td>
+<td>f</td>
+<td>21</td>
+<td>29</td>
+<td>p</td>
+<td>compact</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>audi</td>
+<td>a4</td>
+<td>2.0</td>
+<td>2008</td>
+<td>4</td>
+<td>manual(m6)</td>
+<td>f</td>
+<td>20</td>
+<td>31</td>
+<td>p</td>
+<td>compact</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>audi</td>
+<td>a4</td>
+<td>2.0</td>
+<td>2008</td>
+<td>4</td>
+<td>auto(av)</td>
+<td>f</td>
+<td>21</td>
+<td>30</td>
+<td>p</td>
+<td>compact</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>audi</td>
+<td>a4</td>
+<td>2.8</td>
+<td>1999</td>
+<td>6</td>
+<td>auto(l5)</td>
+<td>f</td>
+<td>16</td>
+<td>26</td>
+<td>p</td>
+<td>compact</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="487f104f" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(mpg, x<span class="op">=</span><span class="st">"cty"</span>,y<span class="op">=</span><span class="st">"hwy"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-3-output-1.png" width="585" height="429" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="q2" class="level3">
+<h3 class="anchored" data-anchor-id="q2">Q2</h3>
+<pre><code>미국의 지역별 인구통계 정보를 담은 midwest.csv 를 이용해 전체 인구와 아시아인 
+인구 간에 어떤 관계가 있는지 알아보려고 합니다. x축은 poptotal, y축은 popasian으로 된 
+산점도를 만들어 보세요. 전체 인구는 50만 명 이하, 아시아인 인구는 1만 면 이하인 지역만 
+산점도에 표시되게 설정하세요. </code></pre>
+<div id="3d74771f" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>midwest<span class="op">=</span>pd.read_csv(<span class="st">'data/midwest.csv '</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>midwest.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">PID</th>
+<th data-quarto-table-cell-role="th">county</th>
+<th data-quarto-table-cell-role="th">state</th>
+<th data-quarto-table-cell-role="th">area</th>
+<th data-quarto-table-cell-role="th">poptotal</th>
+<th data-quarto-table-cell-role="th">popdensity</th>
+<th data-quarto-table-cell-role="th">popwhite</th>
+<th data-quarto-table-cell-role="th">popblack</th>
+<th data-quarto-table-cell-role="th">popamerindian</th>
+<th data-quarto-table-cell-role="th">popasian</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">percollege</th>
+<th data-quarto-table-cell-role="th">percprof</th>
+<th data-quarto-table-cell-role="th">poppovertyknown</th>
+<th data-quarto-table-cell-role="th">percpovertyknown</th>
+<th data-quarto-table-cell-role="th">percbelowpoverty</th>
+<th data-quarto-table-cell-role="th">percchildbelowpovert</th>
+<th data-quarto-table-cell-role="th">percadultpoverty</th>
+<th data-quarto-table-cell-role="th">percelderlypoverty</th>
+<th data-quarto-table-cell-role="th">inmetro</th>
+<th data-quarto-table-cell-role="th">category</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>561</td>
+<td>ADAMS</td>
+<td>IL</td>
+<td>0.052</td>
+<td>66090</td>
+<td>1270.961540</td>
+<td>63917</td>
+<td>1702</td>
+<td>98</td>
+<td>249</td>
+<td>...</td>
+<td>19.631392</td>
+<td>4.355859</td>
+<td>63628</td>
+<td>96.274777</td>
+<td>13.151443</td>
+<td>18.011717</td>
+<td>11.009776</td>
+<td>12.443812</td>
+<td>0</td>
+<td>AAR</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>562</td>
+<td>ALEXANDER</td>
+<td>IL</td>
+<td>0.014</td>
+<td>10626</td>
+<td>759.000000</td>
+<td>7054</td>
+<td>3496</td>
+<td>19</td>
+<td>48</td>
+<td>...</td>
+<td>11.243308</td>
+<td>2.870315</td>
+<td>10529</td>
+<td>99.087145</td>
+<td>32.244278</td>
+<td>45.826514</td>
+<td>27.385647</td>
+<td>25.228976</td>
+<td>0</td>
+<td>LHR</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>563</td>
+<td>BOND</td>
+<td>IL</td>
+<td>0.022</td>
+<td>14991</td>
+<td>681.409091</td>
+<td>14477</td>
+<td>429</td>
+<td>35</td>
+<td>16</td>
+<td>...</td>
+<td>17.033819</td>
+<td>4.488572</td>
+<td>14235</td>
+<td>94.956974</td>
+<td>12.068844</td>
+<td>14.036061</td>
+<td>10.852090</td>
+<td>12.697410</td>
+<td>0</td>
+<td>AAR</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>564</td>
+<td>BOONE</td>
+<td>IL</td>
+<td>0.017</td>
+<td>30806</td>
+<td>1812.117650</td>
+<td>29344</td>
+<td>127</td>
+<td>46</td>
+<td>150</td>
+<td>...</td>
+<td>17.278954</td>
+<td>4.197800</td>
+<td>30337</td>
+<td>98.477569</td>
+<td>7.209019</td>
+<td>11.179536</td>
+<td>5.536013</td>
+<td>6.217047</td>
+<td>1</td>
+<td>ALU</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>565</td>
+<td>BROWN</td>
+<td>IL</td>
+<td>0.018</td>
+<td>5836</td>
+<td>324.222222</td>
+<td>5264</td>
+<td>547</td>
+<td>14</td>
+<td>5</td>
+<td>...</td>
+<td>14.475999</td>
+<td>3.367680</td>
+<td>4815</td>
+<td>82.505140</td>
+<td>13.520249</td>
+<td>13.022889</td>
+<td>11.143211</td>
+<td>19.200000</td>
+<td>0</td>
+<td>AAR</td>
+</tr>
+</tbody>
+</table>
+
+<p>5 rows × 28 columns</p>
+</div>
+</div>
+</div>
+<div id="44ad956f" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(midwest, x<span class="op">=</span><span class="st">"poptotal"</span>, </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>                         y<span class="op">=</span><span class="st">"popasian"</span>).<span class="bu">set</span>(xlim<span class="op">=</span>[<span class="dv">0</span>,<span class="dv">500000</span>],ylim<span class="op">=</span>[<span class="dv">0</span>,<span class="dv">10000</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-5-output-1.png" width="635" height="434" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 <hr>
-<p>표본 분산 계산 시 왜 n-1로 나누는지 알아보도록 하겠습니다. 균일분포 (3, 7)에서 20개의 표본을 뽑아서 분산을 2가지 방법으로 추정해보세요.</p>
-<hr>
-<section id="n-1로-나눈-것을-s_2-n으로-나눈-것을-k_2로-정의하고-s_2의-분포와-k_2의-분포를-그려주세요-10000개-사용" class="level2">
-<h2 class="anchored" data-anchor-id="n-1로-나눈-것을-s_2-n으로-나눈-것을-k_2로-정의하고-s_2의-분포와-k_2의-분포를-그려주세요-10000개-사용">1. n-1로 나눈 것을 s_2, n으로 나눈 것을 k_2로 정의하고, s_2의 분포와 k_2의 분포를 그려주세요! (10000개 사용)</h2>
-<div id="2e63b182" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np    </span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt    </span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns    </span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>s_2<span class="op">=</span>[]</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>k_2<span class="op">=</span>[]</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10000</span>):</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    a<span class="op">=</span>np.random.uniform(<span class="dv">3</span>,<span class="dv">7</span>,<span class="dv">20</span>)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    b<span class="op">=</span><span class="bu">sum</span>((a<span class="op">-</span>a.mean())<span class="op">**</span><span class="dv">2</span>)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    c_1<span class="op">=</span>b<span class="op">/</span>(<span class="bu">len</span>(a)<span class="op">-</span><span class="dv">1</span>)</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    c<span class="op">=</span>b<span class="op">/</span>(<span class="bu">len</span>(a))</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    s_2.append(c_1)</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    k_2.append(c)</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>s_2, color<span class="op">=</span><span class="st">"red"</span>)</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>k_2, color<span class="op">=</span><span class="st">"y"</span>)</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="page-1" class="level1">
+<h1>211 page</h1>
+<section id="q1-1" class="level3">
+<h3 class="anchored" data-anchor-id="q1-1">Q1</h3>
+<pre><code>어떤 회사에서 생산한 suv 차종의 도시 연비가 높은지 알아보려고 합니다. 
+suv 차종을 대상으로 cty 평균이 가장 높은 회사 다섯 곳을 막대그래프로 표현해 보세요. 
+막대는 연비가 높은 순으로 정렬하세요. </code></pre>
+<div id="0ad73251" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>plt.clf()</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>mpg_suv<span class="op">=</span>mpg.query(<span class="st">'category=="suv"'</span>).groupby(<span class="st">'manufacturer'</span>)[<span class="st">"cty"</span>].mean().sort_values(ascending<span class="op">=</span><span class="va">False</span>).head()</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>sns.barplot(mpg_suv)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/cell-2-output-1.png" width="593" height="411" class="figure-img"></p>
+<p><img src="index_files/figure-html/cell-6-output-1.png" width="597" height="429" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="각-분포-그래프에-모분산의-위치에-녹색-막대를-그려주세요." class="level2">
-<h2 class="anchored" data-anchor-id="각-분포-그래프에-모분산의-위치에-녹색-막대를-그려주세요.">2. 각 분포 그래프에 모분산의 위치에 녹색 막대를 그려주세요.</h2>
-<div id="502da81a" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>var<span class="op">=</span>((<span class="dv">7</span><span class="op">-</span><span class="dv">3</span>)<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span><span class="dv">12</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>plt.axvline(var, color <span class="op">=</span> <span class="st">'green'</span>, linestyle <span class="op">=</span> <span class="st">'-'</span>,  linewidth <span class="op">=</span> <span class="dv">3</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>s_2, color<span class="op">=</span><span class="st">"red"</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"n-1로 나눈 것"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="q2-1" class="level3">
+<h3 class="anchored" data-anchor-id="q2-1">Q2</h3>
+<pre><code>자동차 중에 어떤 category가 많은지 알아보려고 합니다. sns.barplot() 을 이용해 자동차 종류별 빈도를 표현한 막대그래프를 만들어 보세요. 막대는 빈도가 높은 순으로 정렬하세요. </code></pre>
+<div id="2129176e" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>plt.clf()</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>mpg_c<span class="op">=</span>mpg.groupby(<span class="st">'category'</span>)[<span class="st">'category'</span>].count().sort_values(ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>sns.barplot(mpg_c).<span class="bu">set</span>(ylim<span class="op">=</span>[<span class="dv">0</span>,<span class="dv">100</span>])</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Frequency barplot by category"</span>)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/cell-3-output-1.png" width="593" height="411" class="figure-img"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>n-1로 나눈 것</code></pre>
-</div>
-</div>
-<div id="526a0935" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>plt.axvline(var, color <span class="op">=</span> <span class="st">'green'</span>, linestyle <span class="op">=</span> <span class="st">'-'</span>,  linewidth <span class="op">=</span> <span class="dv">3</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>k_2, color<span class="op">=</span><span class="st">"y"</span>)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"n으로 나눈 것"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/cell-4-output-1.png" width="593" height="411" class="figure-img"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>n으로 나눈 것</code></pre>
-</div>
-</div>
-</section>
-<section id="결과를-살펴보고-왜-n-1로-나눈-것을-분산을-추정하는-지표로" class="level2">
-<h2 class="anchored" data-anchor-id="결과를-살펴보고-왜-n-1로-나눈-것을-분산을-추정하는-지표로">3. 결과를 살펴보고, 왜 n-1로 나눈 것을 분산을 추정하는 지표로</h2>
-</section>
-<section id="사용하는-것이-타당한지-써주세요" class="level2">
-<h2 class="anchored" data-anchor-id="사용하는-것이-타당한지-써주세요">사용하는 것이 타당한지 써주세요!</h2>
-<div id="9815337c" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>plt.axvline(var, color <span class="op">=</span> <span class="st">'green'</span>, linestyle <span class="op">=</span> <span class="st">'-'</span>,  linewidth <span class="op">=</span> <span class="dv">3</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>s_2, color<span class="op">=</span><span class="st">"red"</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>k_2, color<span class="op">=</span><span class="st">"y"</span>)</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/cell-5-output-1.png" width="593" height="411" class="figure-img"></p>
+<p><img src="index_files/figure-html/cell-7-output-1.png" width="593" height="503" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
