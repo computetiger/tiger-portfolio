@@ -201,7 +201,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <hr>
 <section id="n-1로-나눈-것을-s_2-n으로-나눈-것을-k_2로-정의하고-s_2의-분포와-k_2의-분포를-그려주세요-10000개-사용" class="level2">
 <h2 class="anchored" data-anchor-id="n-1로-나눈-것을-s_2-n으로-나눈-것을-k_2로-정의하고-s_2의-분포와-k_2의-분포를-그려주세요-10000개-사용">1. n-1로 나눈 것을 s_2, n으로 나눈 것을 k_2로 정의하고, s_2의 분포와 k_2의 분포를 그려주세요! (10000개 사용)</h2>
-<div id="bbb7b8e9" class="cell" data-execution_count="1">
+<div id="a2295b9d" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np    </span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt    </span>
@@ -231,7 +231,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="각-분포-그래프에-모분산의-위치에-녹색-막대를-그려주세요." class="level2">
 <h2 class="anchored" data-anchor-id="각-분포-그래프에-모분산의-위치에-녹색-막대를-그려주세요.">2. 각 분포 그래프에 모분산의 위치에 녹색 막대를 그려주세요.</h2>
-<div id="ea9f6b3c" class="cell" data-execution_count="2">
+<div id="fac78ff9" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>var<span class="op">=</span>((<span class="dv">7</span><span class="op">-</span><span class="dv">3</span>)<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span><span class="dv">12</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>plt.axvline(var, color <span class="op">=</span> <span class="st">'green'</span>, linestyle <span class="op">=</span> <span class="st">'-'</span>,  linewidth <span class="op">=</span> <span class="dv">3</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>s_2, color<span class="op">=</span><span class="st">"red"</span>)</span>
@@ -248,7 +248,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>n-1로 나눈 것</code></pre>
 </div>
 </div>
-<div id="f19df5c5" class="cell" data-execution_count="3">
+<div id="04c401a8" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>plt.axvline(var, color <span class="op">=</span> <span class="st">'green'</span>, linestyle <span class="op">=</span> <span class="st">'-'</span>,  linewidth <span class="op">=</span> <span class="dv">3</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>k_2, color<span class="op">=</span><span class="st">"y"</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
@@ -270,7 +270,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="사용하는-것이-타당한지-써주세요" class="level2">
 <h2 class="anchored" data-anchor-id="사용하는-것이-타당한지-써주세요">사용하는 것이 타당한지 써주세요!</h2>
-<div id="61b7fcc9" class="cell" data-execution_count="4">
+<div id="70222ab2" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>plt.axvline(var, color <span class="op">=</span> <span class="st">'green'</span>, linestyle <span class="op">=</span> <span class="st">'-'</span>,  linewidth <span class="op">=</span> <span class="dv">3</span>)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>s_2, color<span class="op">=</span><span class="st">"red"</span>)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>k_2, color<span class="op">=</span><span class="st">"y"</span>)</span>
