@@ -1,27 +1,33 @@
 ---
-title: "HOME"
+title: "花樣年華"
 jupyter: python3
+toc: false
+about:
+    id: hero-heading
+    template: jolla
+    image: pic1.jpg
+    links: 
+      - icon: github
+        text: Github
+        href: https://github.com/computetiger/tiger-portfolio.git
 ---
 
-##  homepage!     
+## 盡人事待天命     
 
 Compute Tiger.      
 ====================================
 
-### Skill
+### Certification
 
 ```
-python 
-Rstudio
-
+Advanced Data Analytics Semi-Professional (ADsP)
+MOSMASTER
 ```
 
-### Certificate
-```
-Certificate
-```
+### Research Interests
+*HCI                
+*Recommender Systems                
+*Data Analysis              
 
-### Project
-```
-Text Mining 
-```
+### Movie
+[Kar Wai Wong] [https://watcha.com/staffmades/gsmX2ZD3qr]

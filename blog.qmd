@@ -1,0 +1,17 @@
+---
+title: "글 목록"
+listing:
+  contents: posts
+  sort: "date desc"
+  type: default
+  categories: true
+---
+
+Homepage. blog     
+
+
+### python
+```{python}
+print("big data ", 5+5)
+```
+

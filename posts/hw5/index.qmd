@@ -1,0 +1,86 @@
+---
+title: "LS bigdata school HW5"
+author: "tiger"
+date: "2024-07-30"
+categories: [bigdata]
+---
+
+---
+title: "HW5"
+jupyter: python3
+---
+
+```{python}
+#파일 불러오기, 컬럼명 변경경
+import pandas as pd
+import seaborn as sns    
+import numpy as np    
+import matplotlib.pyplot as plt    
+!pip install pyreadstat
+raw_welfare=pd.read_spss('data/Koweps_hpwc14_2019_beta2.sav')
+welfare=raw_welfare.copy()
+
+welfare=welfare.rename(
+    columns={"h14_g3": "sex",
+             "h14_g4": "birth",
+             "h14_g10": "marriage_type",
+             "h14_g11": "religion",
+             "p1402_8aq1": "income",
+             "h14_eco9" : "code_job",
+             "h14_reg7" : "code_region"})
+             
+welfare=welfare[["sex","birth","marriage_type","religion","income","code_job","code_region"]]
+
+```
+
+```{python}
+# 성별 전처리
+welfare["sex"].value_counts()
+welfare["sex"].isna().sum()
+welfare["sex"]=np.where(welfare["sex"]==1.0, "male","female")
+```
+
+```{python}
+# 월급 전처리 & 평균 , 시각화
+sex_income=welfare.dropna(subset="income").groupby("sex",as_index=False)[["income"]].mean() 
+sns.barplot(data=sex_income, x="sex", y="income")
+plt.show()
+```
+
+
+###  각 성별 95% 신뢰구간 계산후 그리기. norm.ppf() 사용해서 그릴 것. 모분산은 표본 분산을 사용해서 추정
+```{python}
+from scipy.stats import *
+all_income=welfare.dropna(subset="income")
+f_income=all_income.loc[all_income["sex"]=="female","income"]
+m_income=all_income.loc[all_income["sex"]=="male","income"]
+
+f_mean=f_income.mean()
+m_mean=m_income.mean()
+
+f_std=f_income.std()
+m_std=m_income.std()
+
+f_n = len(f_income)
+m_n = len(m_income)
+```
+
+```{python}
+
+z=norm.ppf(0.95, loc=0, scale=1)
+
+f_max=f_mean+z*f_std/np.sqrt(f_n)
+f_min=f_mean-z*f_std/np.sqrt(f_n)
+
+m_max=m_mean+z*m_std/np.sqrt(m_n)
+m_min=m_mean-z*m_std/np.sqrt(m_n)
+```
+
+```{python}
+plt.clf()
+sns.barplot(data=sex_income, x="sex", y="income")
+plt.plot([1, 1], [m_min, m_max], 'r-')
+plt.plot([0, 0], [f_min, f_max], 'r-')
+plt.show()
+```
+

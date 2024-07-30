@@ -1,0 +1,12 @@
+{
+  "hash": "3b1f9dcecaea7fbf0ca884c4622f8ba5",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: \"LS bigdata school HW_4\"\nauthor: \"tiger\"\ndate: \"2024-07-29\"\ncategories: [bigdata]\n---\n\n---\ntitle: \"HW_4\"\njupyter: python3\n---\n\n***\n표본 분산 계산 시 왜 n-1로 나누는지 알아보도록 하겠습니다. 균일분포 (3, 7)에서 20개의 표본을 뽑아서 분산을 2가지 방법으로 추정해보세요.      \n\n***                           \n\n## 1. n-1로 나눈 것을 s_2, n으로 나눈 것을 k_2로 정의하고, s_2의 분포와 k_2의 분포를 그려주세요! (10000개 사용)\n\n::: {#74be49b4 .cell execution_count=1}\n``` {.python .cell-code}\nimport numpy as np    \nimport pandas as pd\nimport matplotlib.pyplot as plt    \nimport seaborn as sns    \nfrom scipy.stats import uniform\n\ns_2=[]\nk_2=[]\n\nfor i in range(10000):\n    a=uniform.rvs(size=20, loc=3, scale=4)\n    b=sum((a-a.mean())**2)\n    c_1= b/(len(a)-1)\n    c  = b/(len(a))\n    s_2.append(c_1)\n    k_2.append(c)\nsns.histplot(data=s_2, color=\"red\")\nsns.histplot(data=k_2, color=\"y\")\nplt.show()\n```\n\n::: {.cell-output .cell-output-display}\n![](index_files/figure-html/cell-2-output-1.png){width=593 height=411}\n:::\n:::\n\n\n## 2. 각 분포 그래프에 모분산의 위치에 녹색 막대를 그려주세요.\n\n::: {#41151181 .cell execution_count=2}\n``` {.python .cell-code}\nvar=((7-3)**2)/12\nplt.axvline(var, color = 'green', linestyle = '-',  linewidth = 3)\nsns.histplot(data=s_2, color=\"red\")\nplt.show()\nprint(\"n-1로 나눈 것\")\n```\n\n::: {.cell-output .cell-output-display}\n![](index_files/figure-html/cell-3-output-1.png){width=593 height=411}\n:::\n\n::: {.cell-output .cell-output-stdout}\n```\nn-1로 나눈 것\n```\n:::\n:::\n\n\n::: {#a2c19280 .cell execution_count=3}\n``` {.python .cell-code}\nplt.axvline(var, color = 'green', linestyle = '-',  linewidth = 3)\nsns.histplot(data=k_2, color=\"y\")\nplt.show()\nprint(\"n으로 나눈 것\")\n```\n\n::: {.cell-output .cell-output-display}\n![](index_files/figure-html/cell-4-output-1.png){width=594 height=411}\n:::\n\n::: {.cell-output .cell-output-stdout}\n```\nn으로 나눈 것\n```\n:::\n:::\n\n\n## 3. 결과를 살펴보고, 왜 n-1로 나눈 것을 분산을 추정하는 지표로 \n## 사용하는 것이 타당한지 써주세요!\n\n::: {#5ca1bdf0 .cell execution_count=4}\n``` {.python .cell-code}\nplt.axvline(var, color = 'green', linestyle = '-',  linewidth = 3)\nsns.histplot(data=s_2, color=\"red\")\nsns.histplot(data=k_2, color=\"y\")\nplt.show()\n```\n\n::: {.cell-output .cell-output-display}\n![](index_files/figure-html/cell-5-output-1.png){width=593 height=411}\n:::\n:::\n\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}
