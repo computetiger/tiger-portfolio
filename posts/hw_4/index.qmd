@@ -36,7 +36,10 @@ for i in range(10000):
 sns.histplot(data=s_2, color="red")
 sns.histplot(data=k_2, color="y")
 plt.show()
+<<<<<<< HEAD
 s_2.shape()
+=======
+>>>>>>> 6cbbb7eade37dee30b9807f3594b0c1fd3e6305a
 
 ```
 
